@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDR Champions League — Factorial IT</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f4f0;min-height:100vh;padding:2rem 1rem}
+.page{max-width:720px;margin:0 auto}
+.wrap{background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,0.08);padding:2rem 1.5rem;margin-bottom:1rem}
+
+.hero{text-align:center;padding:1.5rem 1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:1.75rem}
+.hero-title{font-size:26px;font-weight:600;color:#1a1a18;letter-spacing:-0.5px}
+.hero-sub{font-size:13px;color:#737370;margin-top:5px}
+.pills{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.pill{font-size:12px;padding:3px 11px;border-radius:20px;border:1px solid rgba(0,0,0,0.12);color:#737370}
+
+.sl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#737370;margin-bottom:10px}
+.block{margin-bottom:1.75rem}
+.divider{border:none;border-top:1px solid rgba(0,0,0,0.07);margin:1.5rem 0}
+
+.scoring{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden}
+.score-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:12px}
+.score-row+.score-row{border-top:1px solid rgba(0,0,0,0.07)}
+.score-text{font-size:14px;font-weight:600;color:#1a1a18}
+.score-desc{font-size:12px;color:#737370;margin-top:3px;font-weight:400}
+.badge-gray{font-size:14px;font-weight:600;padding:5px 14px;border-radius:20px;background:#F1EFE8;color:#444441;white-space:nowrap}
+.badge-blue{font-size:14px;font-weight:600;padding:5px 14px;border-radius:20px;background:#E6F1FB;color:#0C447C;white-space:nowrap}
+.badge-amber{font-size:14px;font-weight:600;padding:5px 14px;border-radius:20px;background:#FAEEDA;color:#633806;white-space:nowrap}
+
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:1.25rem}
+.tw{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:8px;padding:10px 8px;text-align:center}
+.tw.hl{border-color:#378ADD;background:#E6F1FB}
+.tw-num{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737370}
+.tw.hl .tw-num{color:#185FA5}
+.tw-label{font-size:12px;font-weight:600;color:#1a1a18;margin-top:3px}
+.tw.hl .tw-label{color:#0C447C}
+
+.table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;width:100%}
+.th-row{display:grid;padding:8px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#737370}
+.p-row{display:grid;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07)}
+.p-row:last-child{border-bottom:none}
+.av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+.av-blue{background:#E6F1FB;color:#0C447C}
+.av-green{background:#EAF3DE;color:#27500A}
+.name{font-weight:600;font-size:13px;color:#1a1a18}
+.pts-input{width:46px;border:1px solid rgba(0,0,0,0.15);border-radius:6px;padding:4px 6px;font-size:13px;text-align:center;background:#fff;color:#1a1a18;font-family:inherit}
+.pts-input:focus{outline:none;border-color:#378ADD}
+.rank-num{font-size:13px;font-weight:600;color:#737370;text-align:center}
+.rank-0{color:#BA7517}
+.rank-1{color:#888780}
+.rank-2{color:#993C1D}
+.qualify-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:500}
+.qt-blue{background:#E6F1FB;color:#185FA5}
+.qt-green{background:#EAF3DE;color:#3B6D11}
+
+.split-grid{display:grid;grid-template-columns:3fr 2fr;gap:10px}
+.mini-table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden}
+.mini-head{padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.mini-head-blue{background:#E6F1FB;color:#185FA5}
+.mini-head-green{background:#EAF3DE;color:#3B6D11}
+.mini-row{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(0,0,0,0.07);font-size:13px;color:#1a1a18}
+.mini-row:last-child{border-bottom:none}
+
+.note{font-size:12px;color:#737370;margin-top:8px;line-height:1.55}
+
+.bracket-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.match{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:12px 14px}
+.match-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737370;margin-bottom:8px}
+.match-p{display:flex;align-items:center;justify-content:space-between;padding:5px 0;font-size:13px;color:#1a1a18;font-weight:500}
+.match-p+.match-p{border-top:1px solid rgba(0,0,0,0.07)}
+.vs{text-align:center;font-size:10px;color:#737370;padding:2px 0}
+.seed-tag{font-size:11px;padding:2px 7px;border-radius:10px;background:#f5f4f0;color:#737370}
+.tbd{color:#aaa;font-style:italic;font-weight:400}
+
+.final-match{background:#fff;border:2px solid #378ADD;border-radius:12px;padding:13px 16px;margin-bottom:10px}
+.final-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#185FA5;margin-bottom:10px}
+
+.challenger-box{background:#fff;border:1px solid #97C459;border-radius:12px;padding:13px 16px;margin-bottom:10px}
+.challenger-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#3B6D11;margin-bottom:8px}
+.challenger-note{font-size:12px;color:#737370;margin-top:6px;line-height:1.5}
+
+.prizes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.prize{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:14px}
+.prize.p1{border-color:#EF9F27}
+.prize-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-bottom:8px}
+.pc-gold{background:#FAEEDA;color:#633806}
+.pc-silver{background:#F1EFE8;color:#444441}
+.pc-bronze{background:#FAECE7;color:#712B13}
+.pc-green{background:#EAF3DE;color:#27500A}
+.prize-title{font-size:14px;font-weight:600;color:#1a1a18}
+.prize-input{width:100%;border:1px solid rgba(0,0,0,0.15);border-radius:6px;padding:5px 8px;font-size:13px;background:#fff;color:#1a1a18;font-family:inherit;margin-top:6px}
+.prize-input:focus{outline:none;border-color:#378ADD}
+
+.tracker-table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;width:100%}
+.tracker-th{display:grid;padding:8px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#737370}
+.tracker-row{display:grid;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07);font-size:13px}
+.tracker-row:last-child{border-bottom:none}
+.pts-total{font-size:14px;font-weight:700;color:#1a1a18;text-align:center}
+
+.footer{text-align:center;font-size:12px;color:#aaa;padding:1rem 0}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="wrap">
+
+<div class="hero">
+  <div class="hero-title">SDR Champions League</div>
+  <div class="hero-sub">Factorial IT &mdash; Monthly competition</div>
+  <div class="pills">
+    <span class="pill">7 players</span>
+    <span class="pill">4 weeks</span>
+    <span class="pill">2 tracks</span>
+    <span class="pill">4 prizes</span>
+  </div>
+</div>
+
+<div class="block">
+  <div class="sl">Scoring system</div>
+  <div class="scoring">
+    <div class="score-row">
+      <div><div class="score-text">Meeting booked for May</div><div class="score-desc">Demo scheduled and taking place this month</div></div>
+      <span class="badge-blue">2 pts</span>
+    </div>
+    <div class="score-row">
+      <div><div class="score-text">Meeting booked for another month</div><div class="score-desc">Demo scheduled but taking place in a future month</div></div>
+      <span class="badge-gray">1 pt</span>
+    </div>
+    <div class="score-row">
+      <div><div class="score-text">Deal closed</div><div class="score-desc">Booked demo &rarr; closed-won this month</div></div>
+      <span class="badge-amber">6 pts</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">Season overview</div>
+  <div class="timeline">
+    <div class="tw hl"><div class="tw-num">Weeks 1&ndash;2</div><div class="tw-label">League phase</div></div>
+    <div class="tw"><div class="tw-num">Cutoff</div><div class="tw-label">Draw &amp; split</div></div>
+    <div class="tw"><div class="tw-num">Week 3</div><div class="tw-label">Semifinals</div></div>
+    <div class="tw"><div class="tw-num">Week 4</div><div class="tw-label">Finals</div></div>
+  </div>
+
+  <div class="sl">Live standings &mdash; weeks 1&ndash;2</div>
+  <div class="table">
+    <div class="th-row" style="grid-template-columns:30px 1fr 60px 70px 60px 60px 90px">
+      <span></span><span>Player</span><span style="text-align:center">May mtg</span><span style="text-align:center">Other mtg</span><span style="text-align:center">Deals</span><span style="text-align:center">Pts</span><span style="text-align:right">Status</span>
+    </div>
+    <div id="standings-body"></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">End of week 2 &mdash; the split</div>
+  <div class="split-grid">
+    <div class="mini-table">
+      <div class="mini-head mini-head-blue">Champions playoff &mdash; top 4</div>
+      <div id="champ-list"></div>
+    </div>
+    <div class="mini-table">
+      <div class="mini-head mini-head-green">Challenger league &mdash; 5th to 7th</div>
+      <div id="chall-list"></div>
+    </div>
+  </div>
+  <div class="note">Challenger league resets at week 3 &mdash; points from weeks 3 and 4 only. Fresh start, fair fight.</div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">Week 3 &mdash; semifinals</div>
+  <div class="bracket-grid">
+    <div class="match">
+      <div class="match-lbl">Semifinal 1</div>
+      <div class="match-p"><span id="sf1-p1" class="tbd">1st seed</span><span class="seed-tag">#1</span></div>
+      <div class="vs">vs</div>
+      <div class="match-p"><span id="sf1-p2" class="tbd">4th seed</span><span class="seed-tag">#4</span></div>
+    </div>
+    <div class="match">
+      <div class="match-lbl">Semifinal 2</div>
+      <div class="match-p"><span id="sf2-p1" class="tbd">2nd seed</span><span class="seed-tag">#2</span></div>
+      <div class="vs">vs</div>
+      <div class="match-p"><span id="sf2-p2" class="tbd">3rd seed</span><span class="seed-tag">#3</span></div>
+    </div>
+  </div>
+  <div class="note">Most points scored in week 3 advances. Losers go to the 3rd place match.</div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">Week 4 &mdash; finals</div>
+  <div class="final-match">
+    <div class="final-lbl">The final &mdash; 1st place</div>
+    <div class="match-p" style="font-size:14px"><span class="tbd">Winner SF1</span></div>
+    <div class="vs" style="padding:5px 0">vs</div>
+    <div class="match-p" style="font-size:14px"><span class="tbd">Winner SF2</span></div>
+  </div>
+  <div class="bracket-grid">
+    <div class="match">
+      <div class="match-lbl">3rd place match</div>
+      <div class="match-p"><span class="tbd">Loser SF1</span></div>
+      <div class="vs">vs</div>
+      <div class="match-p"><span class="tbd">Loser SF2</span></div>
+    </div>
+    <div class="challenger-box" style="margin-bottom:0">
+      <div class="challenger-lbl">Challenger title</div>
+      <div class="match-p" style="font-size:13px;font-weight:500">Most pts in weeks 3&ndash;4</div>
+      <div class="challenger-note" id="chall-names">5th, 6th, 7th &mdash; resets at week 3. Keep grinding.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">Weekly tracker</div>
+  <div class="tracker-table">
+    <div class="tracker-th" style="grid-template-columns:30px 1fr 55px 55px 55px 55px 55px 55px 65px">
+      <span></span><span>Player</span>
+      <span style="text-align:center;font-size:10px">W1 May</span>
+      <span style="text-align:center;font-size:10px">W1 Other</span>
+      <span style="text-align:center;font-size:10px">W1 Deals</span>
+      <span style="text-align:center;font-size:10px">W2 May</span>
+      <span style="text-align:center;font-size:10px">W2 Other</span>
+      <span style="text-align:center;font-size:10px">W2 Deals</span>
+      <span style="text-align:center">Total pts</span>
+    </div>
+    <div id="tracker-body"></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">Prizes</div>
+  <div class="prizes-grid">
+    <div class="prize p1">
+      <div class="prize-circle pc-gold">1</div>
+      <div class="prize-title">Champion</div>
+      <input class="prize-input" placeholder="Enter prize..."/>
+    </div>
+    <div class="prize">
+      <div class="prize-circle pc-silver">2</div>
+      <div class="prize-title">Runner-up</div>
+      <input class="prize-input" placeholder="Enter prize..."/>
+    </div>
+    <div class="prize">
+      <div class="prize-circle pc-bronze">3</div>
+      <div class="prize-title">3rd place</div>
+      <input class="prize-input" placeholder="Enter prize..."/>
+    </div>
+    <div class="prize">
+      <div class="prize-circle pc-green">C</div>
+      <div class="prize-title">Challenger champion</div>
+      <input class="prize-input" placeholder="Enter prize..."/>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="footer">Factorial IT &mdash; SDR Champions League</div>
+</div>
+
+<script>
+const players=[
+  {name:'Ramon',initials:'RA'},
+  {name:'Manuel',initials:'MA'},
+  {name:'Simona',initials:'SI'},
+  {name:'Paul',initials:'PA'},
+  {name:'Lukas',initials:'LU'},
+  {name:'Alfred',initials:'AL'},
+  {name:'Juan',initials:'JU'},
+];
+
+const state=players.map(p=>({
+  ...p,
+  mayMtg:0, otherMtg:0, deals:0,
+  w1may:0, w1other:0, w1deals:0,
+  w2may:0, w2other:0, w2deals:0
+}));
+
+function pts(p){return p.mayMtg*2 + p.otherMtg*1 + p.deals*6}
+function wkpts(may,other,deals){return may*2 + other*1 + deals*6}
+
+function ranked(){
+  return [...state].sort((a,b)=>pts(b)-pts(a));
+}
+
+function syncFromWeekly(p){
+  p.mayMtg=(p.w1may||0)+(p.w2may||0);
+  p.otherMtg=(p.w1other||0)+(p.w2other||0);
+  p.deals=(p.w1deals||0)+(p.w2deals||0);
+}
+
+function renderStandings(){
+  const r=ranked();
+  const body=document.getElementById('standings-body');
+  body.innerHTML='';
+  r.forEach((p,i)=>{
+    const row=document.createElement('div');
+    row.className='p-row';
+    row.style.gridTemplateColumns='30px 1fr 60px 70px 60px 60px 90px';
+    const isChamp=i<4;
+    const tag=isChamp
+      ?'<span class="qualify-tag qt-blue">Playoff</span>'
+      :'<span class="qualify-tag qt-green">Challenger</span>';
+    row.innerHTML=`
+      <div class="av ${isChamp?'av-blue':'av-green'}">${p.initials}</div>
+      <span class="name">${p.name}</span>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.mayMtg}" data-name="${p.name}" data-type="mayMtg"/></div>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.otherMtg}" data-name="${p.name}" data-type="otherMtg"/></div>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.deals}" data-name="${p.name}" data-type="deals"/></div>
+      <div class="rank-num rank-${i}">${pts(p)}</div>
+      <div style="text-align:right">${tag}</div>
+    `;
+    body.appendChild(row);
+  });
+
+  body.querySelectorAll('.pts-input').forEach(inp=>{
+    inp.addEventListener('input',e=>{
+      const s=state.find(x=>x.name===e.target.dataset.name);
+      if(s){s[e.target.dataset.type]=Math.max(0,parseInt(e.target.value)||0);}
+      renderStandings();
+      renderSplit();
+    });
+  });
+
+  renderSplit();
+}
+
+function renderSplit(){
+  const r=ranked();
+  const cl=document.getElementById('champ-list');
+  const ch=document.getElementById('chall-list');
+  cl.innerHTML=''; ch.innerHTML='';
+
+  r.slice(0,4).forEach((p,i)=>{
+    const d=document.createElement('div');
+    d.className='mini-row';
+    d.innerHTML=`<div class="av av-blue">${p.initials}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">${pts(p)} pts</span>`;
+    cl.appendChild(d);
+    if(i===0){document.getElementById('sf1-p1').textContent=p.name;document.getElementById('sf1-p1').className='';}
+    if(i===1){document.getElementById('sf2-p1').textContent=p.name;document.getElementById('sf2-p1').className='';}
+    if(i===2){document.getElementById('sf2-p2').textContent=p.name;document.getElementById('sf2-p2').className='';}
+    if(i===3){document.getElementById('sf1-p2').textContent=p.name;document.getElementById('sf1-p2').className='';}
+  });
+
+  r.slice(4).forEach(p=>{
+    const d=document.createElement('div');
+    d.className='mini-row';
+    d.innerHTML=`<div class="av av-green">${p.initials}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">resets wk 3</span>`;
+    ch.appendChild(d);
+  });
+
+  document.getElementById('chall-names').textContent=r.slice(4).map(p=>p.name).join(', ')+' \u2014 resets at week 3. Keep grinding.';
+}
+
+function renderTracker(){
+  const body=document.getElementById('tracker-body');
+  body.innerHTML='';
+  state.forEach(p=>{
+    const row=document.createElement('div');
+    row.className='tracker-row';
+    row.style.gridTemplateColumns='30px 1fr 55px 55px 55px 55px 55px 55px 65px';
+    const total=wkpts(p.w1may,p.w1other,p.w1deals)+wkpts(p.w2may,p.w2other,p.w2deals);
+    row.innerHTML=`
+      <div class="av av-blue">${p.initials}</div>
+      <span class="name">${p.name}</span>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w1may}" data-name="${p.name}" data-field="w1may"/></div>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w1other}" data-name="${p.name}" data-field="w1other"/></div>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w1deals}" data-name="${p.name}" data-field="w1deals"/></div>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w2may}" data-name="${p.name}" data-field="w2may"/></div>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w2other}" data-name="${p.name}" data-field="w2other"/></div>
+      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w2deals}" data-name="${p.name}" data-field="w2deals"/></div>
+      <div class="pts-total">${total}</div>
+    `;
+    body.appendChild(row);
+  });
+
+  body.querySelectorAll('.pts-input').forEach(inp=>{
+    inp.addEventListener('input',e=>{
+      const s=state.find(x=>x.name===e.target.dataset.name);
+      if(s){
+        s[e.target.dataset.field]=Math.max(0,parseInt(e.target.value)||0);
+        syncFromWeekly(s);
+      }
+      renderTracker();
+      renderStandings();
+    });
+  });
+}
+
+renderStandings();
+renderTracker();
+</script>
+</body>
+</html>
