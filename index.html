@@ -45,12 +45,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .av-blue{background:#E6F1FB;color:#0C447C}
 .av-green{background:#EAF3DE;color:#27500A}
 .name{font-weight:600;font-size:13px;color:#1a1a18}
-.pts-input{width:46px;border:1px solid rgba(0,0,0,0.15);border-radius:6px;padding:4px 6px;font-size:13px;text-align:center;background:#fff;color:#1a1a18;font-family:inherit}
-.pts-input:focus{outline:none;border-color:#378ADD}
-.rank-num{font-size:13px;font-weight:600;color:#737370;text-align:center}
+.rank-num{font-size:13px;font-weight:700;text-align:center}
 .rank-0{color:#BA7517}
 .rank-1{color:#888780}
 .rank-2{color:#993C1D}
+.rank-other{color:#737370}
 .qualify-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:500}
 .qt-blue{background:#E6F1FB;color:#185FA5}
 .qt-green{background:#EAF3DE;color:#3B6D11}
@@ -77,9 +76,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .final-match{background:#fff;border:2px solid #378ADD;border-radius:12px;padding:13px 16px;margin-bottom:10px}
 .final-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#185FA5;margin-bottom:10px}
 
-.challenger-box{background:#fff;border:1px solid #97C459;border-radius:12px;padding:13px 16px;margin-bottom:10px}
+.challenger-box{background:#fff;border:1px solid #97C459;border-radius:12px;padding:13px 16px}
 .challenger-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#3B6D11;margin-bottom:8px}
 .challenger-note{font-size:12px;color:#737370;margin-top:6px;line-height:1.5}
+
+.tracker-table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;width:100%;overflow-x:auto}
+.tracker-inner{min-width:560px}
+.tracker-th{display:grid;padding:8px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#737370;grid-template-columns:30px 1fr 55px 55px 55px 55px 55px 55px 65px}
+.tracker-row{display:grid;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07);grid-template-columns:30px 1fr 55px 55px 55px 55px 55px 55px 65px}
+.tracker-row:last-child{border-bottom:none}
+.pts-total{font-size:14px;font-weight:700;color:#1a1a18;text-align:center}
+.cell-val{font-size:13px;color:#1a1a18;text-align:center;font-weight:500}
 
 .prizes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .prize{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:14px}
@@ -90,14 +97,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .pc-bronze{background:#FAECE7;color:#712B13}
 .pc-green{background:#EAF3DE;color:#27500A}
 .prize-title{font-size:14px;font-weight:600;color:#1a1a18}
-.prize-input{width:100%;border:1px solid rgba(0,0,0,0.15);border-radius:6px;padding:5px 8px;font-size:13px;background:#fff;color:#1a1a18;font-family:inherit;margin-top:6px}
-.prize-input:focus{outline:none;border-color:#378ADD}
+.prize-val{font-size:13px;color:#737370;margin-top:4px}
 
-.tracker-table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;width:100%}
-.tracker-th{display:grid;padding:8px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#737370}
-.tracker-row{display:grid;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07);font-size:13px}
-.tracker-row:last-child{border-bottom:none}
-.pts-total{font-size:14px;font-weight:700;color:#1a1a18;text-align:center}
+.status-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#f5f4f0;border-radius:8px;margin-bottom:12px;font-size:12px;color:#737370}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#97C459;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.status-dot.error{background:#E05C3A;animation:none}
+.refresh-btn{margin-left:auto;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid rgba(0,0,0,0.15);background:#fff;color:#1a1a18;cursor:pointer;font-family:inherit}
+.refresh-btn:hover{background:#f5f4f0}
 
 .footer{text-align:center;font-size:12px;color:#aaa;padding:1rem 0}
 </style>
@@ -146,12 +153,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="tw"><div class="tw-num">Week 4</div><div class="tw-label">Finals</div></div>
   </div>
 
+  <div class="status-bar">
+    <div class="status-dot" id="status-dot"></div>
+    <span id="status-text">Loading data from Google Sheets...</span>
+    <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+  </div>
+
   <div class="sl">Live standings &mdash; weeks 1&ndash;2</div>
   <div class="table">
     <div class="th-row" style="grid-template-columns:30px 1fr 60px 70px 60px 60px 90px">
       <span></span><span>Player</span><span style="text-align:center">May mtg</span><span style="text-align:center">Other mtg</span><span style="text-align:center">Deals</span><span style="text-align:center">Pts</span><span style="text-align:right">Status</span>
     </div>
-    <div id="standings-body"></div>
+    <div id="standings-body"><div style="padding:20px;text-align:center;color:#737370;font-size:13px">Loading...</div></div>
   </div>
 </div>
 
@@ -162,11 +175,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="split-grid">
     <div class="mini-table">
       <div class="mini-head mini-head-blue">Champions playoff &mdash; top 4</div>
-      <div id="champ-list"></div>
+      <div id="champ-list"><div style="padding:12px;font-size:12px;color:#737370">Loading...</div></div>
     </div>
     <div class="mini-table">
       <div class="mini-head mini-head-green">Challenger league &mdash; 5th to 7th</div>
-      <div id="chall-list"></div>
+      <div id="chall-list"><div style="padding:12px;font-size:12px;color:#737370">Loading...</div></div>
     </div>
   </div>
   <div class="note">Challenger league resets at week 3 &mdash; points from weeks 3 and 4 only. Fresh start, fair fight.</div>
@@ -210,10 +223,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="vs">vs</div>
       <div class="match-p"><span class="tbd">Loser SF2</span></div>
     </div>
-    <div class="challenger-box" style="margin-bottom:0">
+    <div class="challenger-box">
       <div class="challenger-lbl">Challenger title</div>
       <div class="match-p" style="font-size:13px;font-weight:500">Most pts in weeks 3&ndash;4</div>
-      <div class="challenger-note" id="chall-names">5th, 6th, 7th &mdash; resets at week 3. Keep grinding.</div>
+      <div class="challenger-note" id="chall-names">Loading...</div>
     </div>
   </div>
 </div>
@@ -223,17 +236,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div class="block">
   <div class="sl">Weekly tracker</div>
   <div class="tracker-table">
-    <div class="tracker-th" style="grid-template-columns:30px 1fr 55px 55px 55px 55px 55px 55px 65px">
-      <span></span><span>Player</span>
-      <span style="text-align:center;font-size:10px">W1 May</span>
-      <span style="text-align:center;font-size:10px">W1 Other</span>
-      <span style="text-align:center;font-size:10px">W1 Deals</span>
-      <span style="text-align:center;font-size:10px">W2 May</span>
-      <span style="text-align:center;font-size:10px">W2 Other</span>
-      <span style="text-align:center;font-size:10px">W2 Deals</span>
-      <span style="text-align:center">Total pts</span>
+    <div class="tracker-inner">
+      <div class="tracker-th">
+        <span></span><span>Player</span>
+        <span style="text-align:center">W1 May</span>
+        <span style="text-align:center">W1 Other</span>
+        <span style="text-align:center">W1 Deals</span>
+        <span style="text-align:center">W2 May</span>
+        <span style="text-align:center">W2 Other</span>
+        <span style="text-align:center">W2 Deals</span>
+        <span style="text-align:center">Total pts</span>
+      </div>
+      <div id="tracker-body"><div style="padding:20px;text-align:center;color:#737370;font-size:13px">Loading...</div></div>
     </div>
-    <div id="tracker-body"></div>
   </div>
 </div>
 
@@ -245,22 +260,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="prize p1">
       <div class="prize-circle pc-gold">1</div>
       <div class="prize-title">Champion</div>
-      <input class="prize-input" placeholder="Enter prize..."/>
+      <div class="prize-val">To be announced</div>
     </div>
     <div class="prize">
       <div class="prize-circle pc-silver">2</div>
       <div class="prize-title">Runner-up</div>
-      <input class="prize-input" placeholder="Enter prize..."/>
+      <div class="prize-val">To be announced</div>
     </div>
     <div class="prize">
       <div class="prize-circle pc-bronze">3</div>
       <div class="prize-title">3rd place</div>
-      <input class="prize-input" placeholder="Enter prize..."/>
+      <div class="prize-val">To be announced</div>
     </div>
     <div class="prize">
       <div class="prize-circle pc-green">C</div>
       <div class="prize-title">Challenger champion</div>
-      <input class="prize-input" placeholder="Enter prize..."/>
+      <div class="prize-val">To be announced</div>
     </div>
   </div>
 </div>
@@ -270,136 +285,141 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <script>
-const players=[
-  {name:'Ramon',initials:'RA'},
-  {name:'Manuel',initials:'MA'},
-  {name:'Simona',initials:'SI'},
-  {name:'Paul',initials:'PA'},
-  {name:'Lukas',initials:'LU'},
-  {name:'Alfred',initials:'AL'},
-  {name:'Juan',initials:'JU'},
-];
+const SHEET_ID = '1AyKSmKulQsON62XGd0NIFklxAisSK4eQzkm55bNWiCA';
+const SHEET_NAME = 'Sheet1';
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;
 
-const state=players.map(p=>({
-  ...p,
-  mayMtg:0, otherMtg:0, deals:0,
-  w1may:0, w1other:0, w1deals:0,
-  w2may:0, w2other:0, w2deals:0
-}));
+const INITIALS = {
+  'Ramon':'RA','Manuel':'MA','Simona':'SI','Paul':'PA',
+  'Lukas':'LU','Alfred':'AL','Juan':'JU'
+};
 
-function pts(p){return p.mayMtg*2 + p.otherMtg*1 + p.deals*6}
-function wkpts(may,other,deals){return may*2 + other*1 + deals*6}
+function pts(p){ return p.w1may*2 + p.w1other*1 + p.w1deals*6 + p.w2may*2 + p.w2other*1 + p.w2deals*6; }
+function wkpts(may,other,deals){ return may*2 + other*1 + deals*6; }
 
-function ranked(){
-  return [...state].sort((a,b)=>pts(b)-pts(a));
+function parseCSV(text){
+  const lines = text.trim().split('\n').slice(1); // skip header
+  return lines.map(line => {
+    const cols = line.split(',').map(c => c.replace(/^"|"$/g,'').trim());
+    return {
+      name: cols[0],
+      w1may:  parseInt(cols[1])||0,
+      w1other:parseInt(cols[2])||0,
+      w1deals:parseInt(cols[3])||0,
+      w2may:  parseInt(cols[4])||0,
+      w2other:parseInt(cols[5])||0,
+      w2deals:parseInt(cols[6])||0,
+    };
+  }).filter(p => p.name);
 }
 
-function syncFromWeekly(p){
-  p.mayMtg=(p.w1may||0)+(p.w2may||0);
-  p.otherMtg=(p.w1other||0)+(p.w2other||0);
-  p.deals=(p.w1deals||0)+(p.w2deals||0);
+function ranked(data){ return [...data].sort((a,b)=>pts(b)-pts(a)); }
+
+function getInitials(name){
+  return INITIALS[name] || name.substring(0,2).toUpperCase();
 }
 
-function renderStandings(){
-  const r=ranked();
-  const body=document.getElementById('standings-body');
-  body.innerHTML='';
+function render(data){
+  const r = ranked(data);
+
+  // Standings
+  const sb = document.getElementById('standings-body');
+  sb.innerHTML = '';
   r.forEach((p,i)=>{
-    const row=document.createElement('div');
-    row.className='p-row';
-    row.style.gridTemplateColumns='30px 1fr 60px 70px 60px 60px 90px';
-    const isChamp=i<4;
-    const tag=isChamp
-      ?'<span class="qualify-tag qt-blue">Playoff</span>'
-      :'<span class="qualify-tag qt-green">Challenger</span>';
-    row.innerHTML=`
-      <div class="av ${isChamp?'av-blue':'av-green'}">${p.initials}</div>
+    const isChamp = i<4;
+    const row = document.createElement('div');
+    row.className = 'p-row';
+    row.style.gridTemplateColumns = '30px 1fr 60px 70px 60px 60px 90px';
+    const rankClass = i<3 ? `rank-${i}` : 'rank-other';
+    const totalMay = p.w1may + p.w2may;
+    const totalOther = p.w1other + p.w2other;
+    const totalDeals = p.w1deals + p.w2deals;
+    row.innerHTML = `
+      <div class="av ${isChamp?'av-blue':'av-green'}">${getInitials(p.name)}</div>
       <span class="name">${p.name}</span>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.mayMtg}" data-name="${p.name}" data-type="mayMtg"/></div>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.otherMtg}" data-name="${p.name}" data-type="otherMtg"/></div>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.deals}" data-name="${p.name}" data-type="deals"/></div>
-      <div class="rank-num rank-${i}">${pts(p)}</div>
-      <div style="text-align:right">${tag}</div>
+      <div class="cell-val">${totalMay}</div>
+      <div class="cell-val">${totalOther}</div>
+      <div class="cell-val">${totalDeals}</div>
+      <div class="rank-num ${rankClass}">${pts(p)}</div>
+      <div style="text-align:right"><span class="qualify-tag ${isChamp?'qt-blue':'qt-green'}">${isChamp?'Playoff':'Challenger'}</span></div>
     `;
-    body.appendChild(row);
+    sb.appendChild(row);
   });
 
-  body.querySelectorAll('.pts-input').forEach(inp=>{
-    inp.addEventListener('input',e=>{
-      const s=state.find(x=>x.name===e.target.dataset.name);
-      if(s){s[e.target.dataset.type]=Math.max(0,parseInt(e.target.value)||0);}
-      renderStandings();
-      renderSplit();
-    });
-  });
-
-  renderSplit();
-}
-
-function renderSplit(){
-  const r=ranked();
-  const cl=document.getElementById('champ-list');
-  const ch=document.getElementById('chall-list');
-  cl.innerHTML=''; ch.innerHTML='';
+  // Split
+  const cl = document.getElementById('champ-list');
+  const ch = document.getElementById('chall-list');
+  cl.innerHTML = ''; ch.innerHTML = '';
 
   r.slice(0,4).forEach((p,i)=>{
-    const d=document.createElement('div');
-    d.className='mini-row';
-    d.innerHTML=`<div class="av av-blue">${p.initials}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">${pts(p)} pts</span>`;
+    const d = document.createElement('div');
+    d.className = 'mini-row';
+    d.innerHTML = `<div class="av av-blue">${getInitials(p.name)}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">${pts(p)} pts</span>`;
     cl.appendChild(d);
-    if(i===0){document.getElementById('sf1-p1').textContent=p.name;document.getElementById('sf1-p1').className='';}
-    if(i===1){document.getElementById('sf2-p1').textContent=p.name;document.getElementById('sf2-p1').className='';}
-    if(i===2){document.getElementById('sf2-p2').textContent=p.name;document.getElementById('sf2-p2').className='';}
-    if(i===3){document.getElementById('sf1-p2').textContent=p.name;document.getElementById('sf1-p2').className='';}
+    const seeds = ['sf1-p1','sf2-p1','sf2-p2','sf1-p2'];
+    const el = document.getElementById(seeds[i]);
+    if(el){ el.textContent = p.name; el.className = ''; }
   });
 
   r.slice(4).forEach(p=>{
-    const d=document.createElement('div');
-    d.className='mini-row';
-    d.innerHTML=`<div class="av av-green">${p.initials}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">resets wk 3</span>`;
+    const d = document.createElement('div');
+    d.className = 'mini-row';
+    d.innerHTML = `<div class="av av-green">${getInitials(p.name)}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">resets wk 3</span>`;
     ch.appendChild(d);
   });
 
-  document.getElementById('chall-names').textContent=r.slice(4).map(p=>p.name).join(', ')+' \u2014 resets at week 3. Keep grinding.';
-}
+  document.getElementById('chall-names').textContent =
+    r.slice(4).map(p=>p.name).join(', ') + ' — resets at week 3. Keep grinding.';
 
-function renderTracker(){
-  const body=document.getElementById('tracker-body');
-  body.innerHTML='';
-  state.forEach(p=>{
-    const row=document.createElement('div');
-    row.className='tracker-row';
-    row.style.gridTemplateColumns='30px 1fr 55px 55px 55px 55px 55px 55px 65px';
-    const total=wkpts(p.w1may,p.w1other,p.w1deals)+wkpts(p.w2may,p.w2other,p.w2deals);
-    row.innerHTML=`
-      <div class="av av-blue">${p.initials}</div>
+  // Tracker
+  const tb = document.getElementById('tracker-body');
+  tb.innerHTML = '';
+  data.forEach(p=>{
+    const row = document.createElement('div');
+    row.className = 'tracker-row';
+    const total = wkpts(p.w1may,p.w1other,p.w1deals) + wkpts(p.w2may,p.w2other,p.w2deals);
+    row.innerHTML = `
+      <div class="av av-blue">${getInitials(p.name)}</div>
       <span class="name">${p.name}</span>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w1may}" data-name="${p.name}" data-field="w1may"/></div>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w1other}" data-name="${p.name}" data-field="w1other"/></div>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w1deals}" data-name="${p.name}" data-field="w1deals"/></div>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w2may}" data-name="${p.name}" data-field="w2may"/></div>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w2other}" data-name="${p.name}" data-field="w2other"/></div>
-      <div style="display:flex;justify-content:center"><input class="pts-input" type="number" min="0" value="${p.w2deals}" data-name="${p.name}" data-field="w2deals"/></div>
+      <div class="cell-val">${p.w1may}</div>
+      <div class="cell-val">${p.w1other}</div>
+      <div class="cell-val">${p.w1deals}</div>
+      <div class="cell-val">${p.w2may}</div>
+      <div class="cell-val">${p.w2other}</div>
+      <div class="cell-val">${p.w2deals}</div>
       <div class="pts-total">${total}</div>
     `;
-    body.appendChild(row);
-  });
-
-  body.querySelectorAll('.pts-input').forEach(inp=>{
-    inp.addEventListener('input',e=>{
-      const s=state.find(x=>x.name===e.target.dataset.name);
-      if(s){
-        s[e.target.dataset.field]=Math.max(0,parseInt(e.target.value)||0);
-        syncFromWeekly(s);
-      }
-      renderTracker();
-      renderStandings();
-    });
+    tb.appendChild(row);
   });
 }
 
-renderStandings();
-renderTracker();
+function setStatus(ok, msg){
+  const dot = document.getElementById('status-dot');
+  const txt = document.getElementById('status-text');
+  dot.className = 'status-dot' + (ok ? '' : ' error');
+  txt.textContent = msg;
+}
+
+async function loadData(){
+  setStatus(true, 'Refreshing data...');
+  try {
+    const res = await fetch(CSV_URL + '&_=' + Date.now());
+    if(!res.ok) throw new Error('Network error');
+    const text = await res.text();
+    const data = parseCSV(text);
+    if(!data.length) throw new Error('No data');
+    render(data);
+    const now = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    setStatus(true, `Live — last updated ${now}. Edit scores in Google Sheets.`);
+  } catch(e) {
+    setStatus(false, 'Could not load data. Make sure the Sheet is public. Retrying in 30s...');
+    console.error(e);
+  }
+}
+
+// Load on start, then every 60 seconds
+loadData();
+setInterval(loadData, 60000);
 </script>
 </body>
 </html>
