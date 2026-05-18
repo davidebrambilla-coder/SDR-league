@@ -9,17 +9,14 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f4f0;min-height:100vh;padding:2rem 1rem}
 .page{max-width:720px;margin:0 auto}
 .wrap{background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,0.08);padding:2rem 1.5rem;margin-bottom:1rem}
-
 .hero{text-align:center;padding:1.5rem 1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:1.75rem}
 .hero-title{font-size:26px;font-weight:600;color:#1a1a18;letter-spacing:-0.5px}
 .hero-sub{font-size:13px;color:#737370;margin-top:5px}
 .pills{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap}
 .pill{font-size:12px;padding:3px 11px;border-radius:20px;border:1px solid rgba(0,0,0,0.12);color:#737370}
-
 .sl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#737370;margin-bottom:10px}
 .block{margin-bottom:1.75rem}
 .divider{border:none;border-top:1px solid rgba(0,0,0,0.07);margin:1.5rem 0}
-
 .scoring{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden}
 .score-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:12px}
 .score-row+.score-row{border-top:1px solid rgba(0,0,0,0.07)}
@@ -28,84 +25,57 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .badge-gray{font-size:14px;font-weight:600;padding:5px 14px;border-radius:20px;background:#F1EFE8;color:#444441;white-space:nowrap}
 .badge-blue{font-size:14px;font-weight:600;padding:5px 14px;border-radius:20px;background:#E6F1FB;color:#0C447C;white-space:nowrap}
 .badge-amber{font-size:14px;font-weight:600;padding:5px 14px;border-radius:20px;background:#FAEEDA;color:#633806;white-space:nowrap}
-
 .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:1.25rem}
 .tw{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:8px;padding:10px 8px;text-align:center}
 .tw.hl{border-color:#378ADD;background:#E6F1FB}
+.tw.done{border-color:#97C459;background:#EAF3DE}
 .tw-num{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737370}
 .tw.hl .tw-num{color:#185FA5}
+.tw.done .tw-num{color:#3B6D11}
 .tw-label{font-size:12px;font-weight:600;color:#1a1a18;margin-top:3px}
 .tw.hl .tw-label{color:#0C447C}
-
-.table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;width:100%}
-.th-row{display:grid;padding:8px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#737370}
-.p-row{display:grid;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07)}
-.p-row:last-child{border-bottom:none}
-.av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
-.av-blue{background:#E6F1FB;color:#0C447C}
-.av-green{background:#EAF3DE;color:#27500A}
-.name{font-weight:600;font-size:13px;color:#1a1a18}
-.rank-num{font-size:13px;font-weight:700;text-align:center}
-.rank-0{color:#BA7517}
-.rank-1{color:#888780}
-.rank-2{color:#993C1D}
-.rank-other{color:#737370}
-.qualify-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:500}
-.qt-blue{background:#E6F1FB;color:#185FA5}
-.qt-green{background:#EAF3DE;color:#3B6D11}
-
-.split-grid{display:grid;grid-template-columns:3fr 2fr;gap:10px}
-.mini-table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden}
-.mini-head{padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
-.mini-head-blue{background:#E6F1FB;color:#185FA5}
-.mini-head-green{background:#EAF3DE;color:#3B6D11}
-.mini-row{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(0,0,0,0.07);font-size:13px;color:#1a1a18}
-.mini-row:last-child{border-bottom:none}
-
-.note{font-size:12px;color:#737370;margin-top:8px;line-height:1.55}
-
-.bracket-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.match{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:12px 14px}
-.match-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737370;margin-bottom:8px}
-.match-p{display:flex;align-items:center;justify-content:space-between;padding:5px 0;font-size:13px;color:#1a1a18;font-weight:500}
-.match-p+.match-p{border-top:1px solid rgba(0,0,0,0.07)}
-.vs{text-align:center;font-size:10px;color:#737370;padding:2px 0}
-.seed-tag{font-size:11px;padding:2px 7px;border-radius:10px;background:#f5f4f0;color:#737370}
-.tbd{color:#aaa;font-style:italic;font-weight:400}
-
-.final-match{background:#fff;border:2px solid #378ADD;border-radius:12px;padding:13px 16px;margin-bottom:10px}
-.final-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#185FA5;margin-bottom:10px}
-
-.challenger-box{background:#fff;border:1px solid #97C459;border-radius:12px;padding:13px 16px}
-.challenger-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#3B6D11;margin-bottom:8px}
-.challenger-note{font-size:12px;color:#737370;margin-top:6px;line-height:1.5}
-
-.tracker-table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;width:100%;overflow-x:auto}
-.tracker-inner{min-width:560px}
-.tracker-th{display:grid;padding:8px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#737370;grid-template-columns:30px 1fr 55px 55px 55px 55px 55px 55px 65px}
-.tracker-row{display:grid;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07);grid-template-columns:30px 1fr 55px 55px 55px 55px 55px 55px 65px}
-.tracker-row:last-child{border-bottom:none}
-.pts-total{font-size:14px;font-weight:700;color:#1a1a18;text-align:center}
-.cell-val{font-size:13px;color:#1a1a18;text-align:center;font-weight:500}
-
-.prizes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.prize{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:14px}
-.prize.p1{border-color:#EF9F27}
-.prize-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-bottom:8px}
-.pc-gold{background:#FAEEDA;color:#633806}
-.pc-silver{background:#F1EFE8;color:#444441}
-.pc-bronze{background:#FAECE7;color:#712B13}
-.pc-green{background:#EAF3DE;color:#27500A}
-.prize-title{font-size:14px;font-weight:600;color:#1a1a18}
-.prize-val{font-size:13px;color:#737370;margin-top:4px}
-
+.tw.done .tw-label{color:#27500A}
 .status-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#f5f4f0;border-radius:8px;margin-bottom:12px;font-size:12px;color:#737370}
 .status-dot{width:8px;height:8px;border-radius:50%;background:#97C459;flex-shrink:0;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .status-dot.error{background:#E05C3A;animation:none}
 .refresh-btn{margin-left:auto;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid rgba(0,0,0,0.15);background:#fff;color:#1a1a18;cursor:pointer;font-family:inherit}
-.refresh-btn:hover{background:#f5f4f0}
-
+.av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+.av-blue{background:#E6F1FB;color:#0C447C}
+.av-green{background:#EAF3DE;color:#27500A}
+.av-gold{background:#FAEEDA;color:#633806}
+.match-card{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.match-card.featured{border:2px solid #378ADD}
+.match-card.green{border:2px solid #97C459}
+.match-head{padding:10px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#737370}
+.match-card.featured .match-head{background:#E6F1FB;color:#185FA5}
+.match-card.green .match-head{background:#EAF3DE;color:#3B6D11}
+.match-player{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid rgba(0,0,0,0.07)}
+.match-player:last-child{border-bottom:none}
+.match-player-name{font-size:13px;font-weight:600;color:#1a1a18;flex:1}
+.match-pts{font-size:16px;font-weight:700;color:#1a1a18;margin-left:auto;min-width:32px;text-align:right}
+.match-pts.winning{color:#27500A}
+.match-pts.losing{color:#b0b0a8}
+.vs-row{text-align:center;font-size:11px;color:#737370;padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.07);background:#fafafa}
+.bracket-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.note{font-size:12px;color:#737370;margin-top:8px;line-height:1.55}
+.ch-player{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid rgba(0,0,0,0.07)}
+.ch-player:last-child{border-bottom:none}
+.ch-player-name{font-size:13px;font-weight:600;color:#1a1a18;flex:1}
+.ch-pts{font-size:16px;font-weight:700;color:#737370}
+.ch-pts.first{color:#BA7517}
+.prizes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.prize{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:14px}
+.prize.p1{border-color:#EF9F27;background:#FFFDF8}
+.prize-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;margin-bottom:10px}
+.pc-gold{background:#FAEEDA;color:#633806}
+.pc-silver{background:#F1EFE8;color:#444441}
+.pc-bronze{background:#FAECE7;color:#712B13}
+.pc-green{background:#EAF3DE;color:#27500A}
+.prize-title{font-size:14px;font-weight:600;color:#1a1a18}
+.prize-items{margin-top:6px}
+.prize-item{font-size:13px;color:#737370;display:flex;align-items:center;gap:6px;margin-top:5px}
+.prize-item::before{content:'·';color:#b0b0a8}
 .footer{text-align:center;font-size:12px;color:#aaa;padding:1rem 0}
 </style>
 </head>
@@ -147,109 +117,101 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div class="block">
   <div class="sl">Season overview</div>
   <div class="timeline">
-    <div class="tw hl"><div class="tw-num">Weeks 1&ndash;2</div><div class="tw-label">League phase</div></div>
-    <div class="tw"><div class="tw-num">Cutoff</div><div class="tw-label">Draw &amp; split</div></div>
-    <div class="tw"><div class="tw-num">Week 3</div><div class="tw-label">Semifinals</div></div>
+    <div class="tw done"><div class="tw-num">Weeks 1–2</div><div class="tw-label">✓ Done</div></div>
+    <div class="tw done"><div class="tw-num">Cutoff</div><div class="tw-label">✓ Split done</div></div>
+    <div class="tw hl"><div class="tw-num">Week 3</div><div class="tw-label">Semifinals</div></div>
     <div class="tw"><div class="tw-num">Week 4</div><div class="tw-label">Finals</div></div>
   </div>
-
   <div class="status-bar">
     <div class="status-dot" id="status-dot"></div>
-    <span id="status-text">Loading data from Google Sheets...</span>
-    <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
-  </div>
-
-  <div class="sl">Live standings &mdash; weeks 1&ndash;2</div>
-  <div class="table">
-    <div class="th-row" style="grid-template-columns:30px 1fr 60px 70px 60px 60px 90px">
-      <span></span><span>Player</span><span style="text-align:center">May mtg</span><span style="text-align:center">Other mtg</span><span style="text-align:center">Deals</span><span style="text-align:center">Pts</span><span style="text-align:right">Status</span>
-    </div>
-    <div id="standings-body"><div style="padding:20px;text-align:center;color:#737370;font-size:13px">Loading...</div></div>
+    <span id="status-text">Loading data...</span>
+    <button class="refresh-btn" onclick="loadData()">&#8635; Refresh</button>
   </div>
 </div>
 
 <hr class="divider">
 
 <div class="block">
-  <div class="sl">End of week 2 &mdash; the split</div>
-  <div class="split-grid">
-    <div class="mini-table">
-      <div class="mini-head mini-head-blue">Champions playoff &mdash; top 4</div>
-      <div id="champ-list"><div style="padding:12px;font-size:12px;color:#737370">Loading...</div></div>
-    </div>
-    <div class="mini-table">
-      <div class="mini-head mini-head-green">Challenger league &mdash; 5th to 7th</div>
-      <div id="chall-list"><div style="padding:12px;font-size:12px;color:#737370">Loading...</div></div>
-    </div>
-  </div>
-  <div class="note">Challenger league resets at week 3 &mdash; points from weeks 3 and 4 only. Fresh start, fair fight.</div>
-</div>
-
-<hr class="divider">
-
-<div class="block">
-  <div class="sl">Week 3 &mdash; semifinals</div>
+  <div class="sl">Week 3 &mdash; Semifinals &middot; reset to 0</div>
   <div class="bracket-grid">
-    <div class="match">
-      <div class="match-lbl">Semifinal 1</div>
-      <div class="match-p"><span id="sf1-p1" class="tbd">1st seed</span><span class="seed-tag">#1</span></div>
-      <div class="vs">vs</div>
-      <div class="match-p"><span id="sf1-p2" class="tbd">4th seed</span><span class="seed-tag">#4</span></div>
-    </div>
-    <div class="match">
-      <div class="match-lbl">Semifinal 2</div>
-      <div class="match-p"><span id="sf2-p1" class="tbd">2nd seed</span><span class="seed-tag">#2</span></div>
-      <div class="vs">vs</div>
-      <div class="match-p"><span id="sf2-p2" class="tbd">3rd seed</span><span class="seed-tag">#3</span></div>
-    </div>
-  </div>
-  <div class="note">Most points scored in week 3 advances. Losers go to the 3rd place match.</div>
-</div>
-
-<hr class="divider">
-
-<div class="block">
-  <div class="sl">Week 4 &mdash; finals</div>
-  <div class="final-match">
-    <div class="final-lbl">The final &mdash; 1st place</div>
-    <div class="match-p" style="font-size:14px"><span class="tbd">Winner SF1</span></div>
-    <div class="vs" style="padding:5px 0">vs</div>
-    <div class="match-p" style="font-size:14px"><span class="tbd">Winner SF2</span></div>
-  </div>
-  <div class="bracket-grid">
-    <div class="match">
-      <div class="match-lbl">3rd place match</div>
-      <div class="match-p"><span class="tbd">Loser SF1</span></div>
-      <div class="vs">vs</div>
-      <div class="match-p"><span class="tbd">Loser SF2</span></div>
-    </div>
-    <div class="challenger-box">
-      <div class="challenger-lbl">Challenger title</div>
-      <div class="match-p" style="font-size:13px;font-weight:500">Most pts in weeks 3&ndash;4</div>
-      <div class="challenger-note" id="chall-names">Loading...</div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="block">
-  <div class="sl">Weekly tracker</div>
-  <div class="tracker-table">
-    <div class="tracker-inner">
-      <div class="tracker-th">
-        <span></span><span>Player</span>
-        <span style="text-align:center">W1 May</span>
-        <span style="text-align:center">W1 Other</span>
-        <span style="text-align:center">W1 Deals</span>
-        <span style="text-align:center">W2 May</span>
-        <span style="text-align:center">W2 Other</span>
-        <span style="text-align:center">W2 Deals</span>
-        <span style="text-align:center">Total pts</span>
+    <div class="match-card featured">
+      <div class="match-head">Semifinal 1</div>
+      <div class="match-player">
+        <div class="av av-gold">RA</div>
+        <span class="match-player-name">Ramon</span>
+        <span class="match-pts" id="sf1-p1">0</span>
       </div>
-      <div id="tracker-body"><div style="padding:20px;text-align:center;color:#737370;font-size:13px">Loading...</div></div>
+      <div class="vs-row">vs</div>
+      <div class="match-player">
+        <div class="av av-blue">SI</div>
+        <span class="match-player-name">Simona</span>
+        <span class="match-pts" id="sf1-p2">0</span>
+      </div>
+    </div>
+    <div class="match-card featured">
+      <div class="match-head">Semifinal 2</div>
+      <div class="match-player">
+        <div class="av av-blue">JU</div>
+        <span class="match-player-name">Juan</span>
+        <span class="match-pts" id="sf2-p1">0</span>
+      </div>
+      <div class="vs-row">vs</div>
+      <div class="match-player">
+        <div class="av av-blue">LU</div>
+        <span class="match-player-name">Lukas</span>
+        <span class="match-pts" id="sf2-p2">0</span>
+      </div>
     </div>
   </div>
+  <div class="note">Most points in week 3 advances to the final. Losers play for 3rd place.</div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">Week 4 &mdash; Finals &middot; cumulative weeks 3+4</div>
+  <div class="match-card featured" style="margin-bottom:10px">
+    <div class="match-head">&#127942; The Final &mdash; 1st place</div>
+    <div class="match-player">
+      <div class="av av-blue" id="f-av1">?</div>
+      <span class="match-player-name" id="f-n1" style="color:#737370;font-style:italic">Winner SF1</span>
+      <span class="match-pts" id="f-p1">—</span>
+    </div>
+    <div class="vs-row">vs</div>
+    <div class="match-player">
+      <div class="av av-blue" id="f-av2">?</div>
+      <span class="match-player-name" id="f-n2" style="color:#737370;font-style:italic">Winner SF2</span>
+      <span class="match-pts" id="f-p2">—</span>
+    </div>
+  </div>
+  <div class="match-card">
+    <div class="match-head">3rd place match</div>
+    <div class="match-player">
+      <div class="av av-blue" id="t-av1">?</div>
+      <span class="match-player-name" id="t-n1" style="color:#737370;font-style:italic">Loser SF1</span>
+      <span class="match-pts" id="t-p1">—</span>
+    </div>
+    <div class="vs-row">vs</div>
+    <div class="match-player">
+      <div class="av av-blue" id="t-av2">?</div>
+      <span class="match-player-name" id="t-n2" style="color:#737370;font-style:italic">Loser SF2</span>
+      <span class="match-pts" id="t-p2">—</span>
+    </div>
+  </div>
+  <div class="note">Finals use cumulative points from week 3 + week 4 combined.</div>
+</div>
+
+<hr class="divider">
+
+<div class="block">
+  <div class="sl">Challenger League &mdash; weeks 3+4 &middot; reset to 0</div>
+  <div class="match-card green">
+    <div class="match-head">Challenger title &mdash; most points in weeks 3 &amp; 4</div>
+    <div id="challenger-rows">
+      <div style="padding:14px;font-size:13px;color:#737370">Loading...</div>
+    </div>
+  </div>
+  <div class="note">Manuel, Paul, Alfred &mdash; fresh start from week 3. Keep grinding.</div>
 </div>
 
 <hr class="divider">
@@ -260,22 +222,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="prize p1">
       <div class="prize-circle pc-gold">1</div>
       <div class="prize-title">Champion</div>
-      <div class="prize-val">To be announced</div>
+      <div class="prize-items">
+        <div class="prize-item">&euro;150 Amazon voucher</div>
+        <div class="prize-item">Dinner cooked by Davide &#128104;&#8205;&#127859;</div>
+      </div>
     </div>
     <div class="prize">
       <div class="prize-circle pc-silver">2</div>
       <div class="prize-title">Runner-up</div>
-      <div class="prize-val">To be announced</div>
+      <div class="prize-items">
+        <div class="prize-item">&euro;100 Amazon voucher</div>
+        <div class="prize-item">Bottle of wine &#127863;</div>
+      </div>
     </div>
     <div class="prize">
       <div class="prize-circle pc-bronze">3</div>
       <div class="prize-title">3rd place</div>
-      <div class="prize-val">To be announced</div>
+      <div class="prize-items">
+        <div class="prize-item">Craft beers box &#127866;</div>
+      </div>
     </div>
     <div class="prize">
       <div class="prize-circle pc-green">C</div>
       <div class="prize-title">Challenger champion</div>
-      <div class="prize-val">To be announced</div>
+      <div class="prize-items">
+        <div class="prize-item">Wine degustation for 2 &#127870;</div>
+      </div>
     </div>
   </div>
 </div>
@@ -286,140 +258,101 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <script>
 const SHEET_ID = '1AyKSmKulQsON62XGd0NIFklxAisSK4eQzkm55bNWiCA';
-const SHEET_NAME = 'Sheet1';
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:csv&sheet=Sheet1&_=';
+const INITIALS = {Ramon:'RA',Manuel:'MA',Simona:'SI',Paul:'PA',Lukas:'LU',Alfred:'AL',Juan:'JU'};
 
-const INITIALS = {
-  'Ramon':'RA','Manuel':'MA','Simona':'SI','Paul':'PA',
-  'Lukas':'LU','Alfred':'AL','Juan':'JU'
-};
-
-function pts(p){ return p.w1may*2 + p.w1other*1 + p.w1deals*6 + p.w2may*2 + p.w2other*1 + p.w2deals*6; }
-function wkpts(may,other,deals){ return may*2 + other*1 + deals*6; }
+function ini(n){ return INITIALS[n]||n.substring(0,2).toUpperCase(); }
+function ptsW3(p){ return (p.w3may||0)*2+(p.w3other||0)*1+(p.w3deals||0)*6; }
+function ptsW4(p){ return (p.w4may||0)*2+(p.w4other||0)*1+(p.w4deals||0)*6; }
+function ptsCum(p){ return ptsW3(p)+ptsW4(p); }
 
 function parseCSV(text){
-  const lines = text.trim().split('\n').slice(1); // skip header
-  return lines.map(line => {
-    const cols = line.split(',').map(c => c.replace(/^"|"$/g,'').trim());
+  const lines = text.trim().split('\n').slice(1);
+  return lines.map(line=>{
+    const c = line.split(',').map(x=>x.replace(/^"|"$/g,'').trim());
     return {
-      name: cols[0],
-      w1may:  parseInt(cols[1])||0,
-      w1other:parseInt(cols[2])||0,
-      w1deals:parseInt(cols[3])||0,
-      w2may:  parseInt(cols[4])||0,
-      w2other:parseInt(cols[5])||0,
-      w2deals:parseInt(cols[6])||0,
+      name:c[0],
+      w3may:parseInt(c[7])||0, w3other:parseInt(c[8])||0, w3deals:parseInt(c[9])||0,
+      w4may:parseInt(c[10])||0, w4other:parseInt(c[11])||0, w4deals:parseInt(c[12])||0,
     };
-  }).filter(p => p.name);
+  }).filter(p=>p.name);
 }
 
-function ranked(data){ return [...data].sort((a,b)=>pts(b)-pts(a)); }
+function get(data,name){
+  return data.find(p=>p.name===name)||{name,w3may:0,w3other:0,w3deals:0,w4may:0,w4other:0,w4deals:0};
+}
 
-function getInitials(name){
-  return INITIALS[name] || name.substring(0,2).toUpperCase();
+function setMatch(el1,el2,pts1,pts2){
+  el1.textContent=pts1; el2.textContent=pts2;
+  if(pts1>pts2){el1.className='match-pts winning';el2.className='match-pts losing';}
+  else if(pts2>pts1){el2.className='match-pts winning';el1.className='match-pts losing';}
+  else{el1.className='match-pts';el2.className='match-pts';}
+}
+
+function setName(avId,nameId,p){
+  document.getElementById(avId).textContent=ini(p.name);
+  const el=document.getElementById(nameId);
+  el.textContent=p.name; el.style.fontStyle='normal'; el.style.color='#1a1a18';
 }
 
 function render(data){
-  const r = ranked(data);
+  const ramon=get(data,'Ramon'), simona=get(data,'Simona');
+  const juan=get(data,'Juan'), lukas=get(data,'Lukas');
+  const manuel=get(data,'Manuel'), paul=get(data,'Paul'), alfred=get(data,'Alfred');
 
-  // Standings
-  const sb = document.getElementById('standings-body');
-  sb.innerHTML = '';
-  r.forEach((p,i)=>{
-    const isChamp = i<4;
-    const row = document.createElement('div');
-    row.className = 'p-row';
-    row.style.gridTemplateColumns = '30px 1fr 60px 70px 60px 60px 90px';
-    const rankClass = i<3 ? `rank-${i}` : 'rank-other';
-    const totalMay = p.w1may + p.w2may;
-    const totalOther = p.w1other + p.w2other;
-    const totalDeals = p.w1deals + p.w2deals;
-    row.innerHTML = `
-      <div class="av ${isChamp?'av-blue':'av-green'}">${getInitials(p.name)}</div>
-      <span class="name">${p.name}</span>
-      <div class="cell-val">${totalMay}</div>
-      <div class="cell-val">${totalOther}</div>
-      <div class="cell-val">${totalDeals}</div>
-      <div class="rank-num ${rankClass}">${pts(p)}</div>
-      <div style="text-align:right"><span class="qualify-tag ${isChamp?'qt-blue':'qt-green'}">${isChamp?'Playoff':'Challenger'}</span></div>
-    `;
-    sb.appendChild(row);
-  });
+  // Semifinals (week 3 only)
+  const sf1r=ptsW3(ramon), sf1s=ptsW3(simona);
+  setMatch(document.getElementById('sf1-p1'),document.getElementById('sf1-p2'),sf1r,sf1s);
+  const sf2j=ptsW3(juan), sf2l=ptsW3(lukas);
+  setMatch(document.getElementById('sf2-p1'),document.getElementById('sf2-p2'),sf2j,sf2l);
 
-  // Split
-  const cl = document.getElementById('champ-list');
-  const ch = document.getElementById('chall-list');
-  cl.innerHTML = ''; ch.innerHTML = '';
+  // Winners/losers based on week 3
+  const sf1w=sf1r>=sf1s?ramon:simona, sf1lo=sf1r>=sf1s?simona:ramon;
+  const sf2w=sf2j>=sf2l?juan:lukas,   sf2lo=sf2j>=sf2l?lukas:juan;
 
-  r.slice(0,4).forEach((p,i)=>{
-    const d = document.createElement('div');
-    d.className = 'mini-row';
-    d.innerHTML = `<div class="av av-blue">${getInitials(p.name)}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">${pts(p)} pts</span>`;
-    cl.appendChild(d);
-    const seeds = ['sf1-p1','sf2-p1','sf2-p2','sf1-p2'];
-    const el = document.getElementById(seeds[i]);
-    if(el){ el.textContent = p.name; el.className = ''; }
-  });
+  // Final — cumulative w3+w4
+  setName('f-av1','f-n1',sf1w); setName('f-av2','f-n2',sf2w);
+  setMatch(document.getElementById('f-p1'),document.getElementById('f-p2'),ptsCum(sf1w),ptsCum(sf2w));
 
-  r.slice(4).forEach(p=>{
-    const d = document.createElement('div');
-    d.className = 'mini-row';
-    d.innerHTML = `<div class="av av-green">${getInitials(p.name)}</div><span class="name">${p.name}</span><span style="margin-left:auto;font-size:12px;color:#737370">resets wk 3</span>`;
-    ch.appendChild(d);
-  });
+  // 3rd place — cumulative w3+w4
+  setName('t-av1','t-n1',sf1lo); setName('t-av2','t-n2',sf2lo);
+  setMatch(document.getElementById('t-p1'),document.getElementById('t-p2'),ptsCum(sf1lo),ptsCum(sf2lo));
 
-  document.getElementById('chall-names').textContent =
-    r.slice(4).map(p=>p.name).join(', ') + ' — resets at week 3. Keep grinding.';
-
-  // Tracker
-  const tb = document.getElementById('tracker-body');
-  tb.innerHTML = '';
-  data.forEach(p=>{
-    const row = document.createElement('div');
-    row.className = 'tracker-row';
-    const total = wkpts(p.w1may,p.w1other,p.w1deals) + wkpts(p.w2may,p.w2other,p.w2deals);
-    row.innerHTML = `
-      <div class="av av-blue">${getInitials(p.name)}</div>
-      <span class="name">${p.name}</span>
-      <div class="cell-val">${p.w1may}</div>
-      <div class="cell-val">${p.w1other}</div>
-      <div class="cell-val">${p.w1deals}</div>
-      <div class="cell-val">${p.w2may}</div>
-      <div class="cell-val">${p.w2other}</div>
-      <div class="cell-val">${p.w2deals}</div>
-      <div class="pts-total">${total}</div>
-    `;
-    tb.appendChild(row);
+  // Challenger sorted by cumulative
+  const challengers=[manuel,paul,alfred].sort((a,b)=>ptsCum(b)-ptsCum(a));
+  const cr=document.getElementById('challenger-rows');
+  cr.innerHTML='';
+  challengers.forEach((p,i)=>{
+    const div=document.createElement('div');
+    div.className='ch-player';
+    div.innerHTML=`<div class="av av-green">${ini(p.name)}</div><span class="ch-player-name">${p.name}</span><span class="ch-pts ${i===0?'first':''}">${ptsCum(p)}</span>`;
+    cr.appendChild(div);
   });
 }
 
-function setStatus(ok, msg){
-  const dot = document.getElementById('status-dot');
-  const txt = document.getElementById('status-text');
-  dot.className = 'status-dot' + (ok ? '' : ' error');
-  txt.textContent = msg;
+function setStatus(ok,msg){
+  document.getElementById('status-dot').className='status-dot'+(ok?'':' error');
+  document.getElementById('status-text').textContent=msg;
 }
 
 async function loadData(){
-  setStatus(true, 'Refreshing data...');
-  try {
-    const res = await fetch(CSV_URL + '&_=' + Date.now());
-    if(!res.ok) throw new Error('Network error');
-    const text = await res.text();
-    const data = parseCSV(text);
-    if(!data.length) throw new Error('No data');
+  setStatus(true,'Refreshing...');
+  try{
+    const res=await fetch(CSV_URL+Date.now());
+    if(!res.ok) throw new Error();
+    const text=await res.text();
+    const data=parseCSV(text);
+    if(!data.length) throw new Error();
     render(data);
-    const now = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-    setStatus(true, `Live — last updated ${now}. Edit scores in Google Sheets.`);
-  } catch(e) {
-    setStatus(false, 'Could not load data. Make sure the Sheet is public. Retrying in 30s...');
-    console.error(e);
+    const now=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    setStatus(true,'Live — last updated '+now+'. Edit scores in Google Sheets.');
+  }catch(e){
+    setStatus(false,'Could not load data. Check Sheet is public. Retrying...');
   }
 }
 
-// Load on start, then every 60 seconds
 loadData();
-setInterval(loadData, 60000);
+setInterval(loadData,60000);
 </script>
 </body>
 </html>
