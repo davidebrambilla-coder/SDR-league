@@ -15,6 +15,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .pills{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap}
 .pill{font-size:12px;padding:3px 11px;border-radius:20px;border:1px solid rgba(0,0,0,0.12);color:#737370}
 .sl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#737370;margin-bottom:10px}
+.sl-concluded{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#97C459;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.concluded-badge{font-size:10px;padding:2px 8px;border-radius:10px;background:#EAF3DE;color:#3B6D11;font-weight:600;letter-spacing:0.05em}
 .block{margin-bottom:1.75rem}
 .divider{border:none;border-top:1px solid rgba(0,0,0,0.07);margin:1.5rem 0}
 .scoring{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden}
@@ -44,6 +46,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .av-blue{background:#E6F1FB;color:#0C447C}
 .av-green{background:#EAF3DE;color:#27500A}
 .av-gold{background:#FAEEDA;color:#633806}
+.av-gray{background:#f0f0ee;color:#737370}
+
+/* Concluded league table */
+.league-table{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;opacity:0.85}
+.league-th{display:grid;grid-template-columns:24px 30px 1fr 50px 60px 70px;padding:8px 14px;background:#f5f4f0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#737370}
+.league-row{display:grid;grid-template-columns:24px 30px 1fr 50px 60px 70px;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07)}
+.league-row:last-child{border-bottom:none}
+.pos{font-size:12px;font-weight:600;color:#737370;text-align:center}
+.pos.p1{color:#BA7517}
+.pos.p2{color:#888780}
+.pos.p3{color:#993C1D}
+.cell{font-size:13px;color:#737370;text-align:center}
+.cell-pts{font-size:13px;font-weight:700;text-align:center}
+.qualify-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:500;text-align:right}
+.qt-blue{background:#E6F1FB;color:#185FA5}
+.qt-green{background:#EAF3DE;color:#3B6D11}
+
+/* Match cards */
 .match-card{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;margin-bottom:10px}
 .match-card.featured{border:2px solid #378ADD}
 .match-card.green{border:2px solid #97C459}
@@ -94,6 +114,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
+<!-- SCORING -->
 <div class="block">
   <div class="sl">Scoring system</div>
   <div class="scoring">
@@ -114,11 +135,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <hr class="divider">
 
+<!-- TIMELINE -->
 <div class="block">
   <div class="sl">Season overview</div>
   <div class="timeline">
-    <div class="tw done"><div class="tw-num">Weeks 1–2</div><div class="tw-label">✓ Done</div></div>
-    <div class="tw done"><div class="tw-num">Cutoff</div><div class="tw-label">✓ Split done</div></div>
+    <div class="tw done"><div class="tw-num">Weeks 1–2</div><div class="tw-label">&#10003; Done</div></div>
+    <div class="tw done"><div class="tw-num">Cutoff</div><div class="tw-label">&#10003; Split done</div></div>
     <div class="tw hl"><div class="tw-num">Week 3</div><div class="tw-label">Semifinals</div></div>
     <div class="tw"><div class="tw-num">Week 4</div><div class="tw-label">Finals</div></div>
   </div>
@@ -131,6 +153,82 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <hr class="divider">
 
+<!-- WEEKS 1-2 CONCLUDED -->
+<div class="block">
+  <div class="sl-concluded">
+    League phase &mdash; weeks 1&ndash;2
+    <span class="concluded-badge">CONCLUDED</span>
+  </div>
+  <div class="league-table">
+    <div class="league-th">
+      <span></span><span></span><span>Player</span>
+      <span style="text-align:center">Mtg</span>
+      <span style="text-align:center">Deals</span>
+      <span style="text-align:right;padding-right:2px">Status</span>
+    </div>
+    <!-- Fixed final standings from weeks 1-2 -->
+    <div class="league-row">
+      <span class="pos p1">1</span>
+      <div class="av av-gold">RA</div>
+      <span style="font-weight:600;font-size:13px;color:#1a1a18">Ramon</span>
+      <span class="cell">23</span>
+      <span class="cell-pts" style="color:#BA7517">46</span>
+      <span style="text-align:right"><span class="qualify-tag qt-blue">Playoff</span></span>
+    </div>
+    <div class="league-row">
+      <span class="pos p2">2</span>
+      <div class="av av-blue">JU</div>
+      <span style="font-weight:600;font-size:13px;color:#1a1a18">Juan</span>
+      <span class="cell">13</span>
+      <span class="cell-pts" style="color:#888780">26</span>
+      <span style="text-align:right"><span class="qualify-tag qt-blue">Playoff</span></span>
+    </div>
+    <div class="league-row">
+      <span class="pos p3">3</span>
+      <div class="av av-blue">LU</div>
+      <span style="font-weight:600;font-size:13px;color:#1a1a18">Lukas</span>
+      <span class="cell">12</span>
+      <span class="cell-pts" style="color:#993C1D">24</span>
+      <span style="text-align:right"><span class="qualify-tag qt-blue">Playoff</span></span>
+    </div>
+    <div class="league-row">
+      <span class="pos">4</span>
+      <div class="av av-blue">SI</div>
+      <span style="font-weight:600;font-size:13px;color:#1a1a18">Simona</span>
+      <span class="cell">10</span>
+      <span class="cell-pts">20</span>
+      <span style="text-align:right"><span class="qualify-tag qt-blue">Playoff</span></span>
+    </div>
+    <div class="league-row" style="background:#fafafa">
+      <span class="pos">5</span>
+      <div class="av av-gray">MA</div>
+      <span style="font-weight:600;font-size:13px;color:#737370">Manuel</span>
+      <span class="cell" style="color:#737370">9</span>
+      <span class="cell-pts" style="color:#737370">18</span>
+      <span style="text-align:right"><span class="qualify-tag qt-green">Challenger</span></span>
+    </div>
+    <div class="league-row" style="background:#fafafa">
+      <span class="pos">6</span>
+      <div class="av av-gray">PA</div>
+      <span style="font-weight:600;font-size:13px;color:#737370">Paul</span>
+      <span class="cell" style="color:#737370">4</span>
+      <span class="cell-pts" style="color:#737370">8</span>
+      <span style="text-align:right"><span class="qualify-tag qt-green">Challenger</span></span>
+    </div>
+    <div class="league-row" style="background:#fafafa">
+      <span class="pos">7</span>
+      <div class="av av-gray">AL</div>
+      <span style="font-weight:600;font-size:13px;color:#737370">Alfred</span>
+      <span class="cell" style="color:#737370">3</span>
+      <span class="cell-pts" style="color:#737370">6</span>
+      <span style="text-align:right"><span class="qualify-tag qt-green">Challenger</span></span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SEMIFINALS -->
 <div class="block">
   <div class="sl">Week 3 &mdash; Semifinals &middot; reset to 0</div>
   <div class="bracket-grid">
@@ -168,20 +266,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <hr class="divider">
 
+<!-- FINALS -->
 <div class="block">
-  <div class="sl">Week 4 &mdash; Finals &middot; cumulative weeks 3+4</div>
+  <div class="sl">Week 4 &mdash; Finals &middot; reset to 0</div>
   <div class="match-card featured" style="margin-bottom:10px">
     <div class="match-head">&#127942; The Final &mdash; 1st place</div>
     <div class="match-player">
       <div class="av av-blue" id="f-av1">?</div>
       <span class="match-player-name" id="f-n1" style="color:#737370;font-style:italic">Winner SF1</span>
-      <span class="match-pts" id="f-p1">—</span>
+      <span class="match-pts" id="f-p1">0</span>
     </div>
     <div class="vs-row">vs</div>
     <div class="match-player">
       <div class="av av-blue" id="f-av2">?</div>
       <span class="match-player-name" id="f-n2" style="color:#737370;font-style:italic">Winner SF2</span>
-      <span class="match-pts" id="f-p2">—</span>
+      <span class="match-pts" id="f-p2">0</span>
     </div>
   </div>
   <div class="match-card">
@@ -189,24 +288,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="match-player">
       <div class="av av-blue" id="t-av1">?</div>
       <span class="match-player-name" id="t-n1" style="color:#737370;font-style:italic">Loser SF1</span>
-      <span class="match-pts" id="t-p1">—</span>
+      <span class="match-pts" id="t-p1">0</span>
     </div>
     <div class="vs-row">vs</div>
     <div class="match-player">
       <div class="av av-blue" id="t-av2">?</div>
       <span class="match-player-name" id="t-n2" style="color:#737370;font-style:italic">Loser SF2</span>
-      <span class="match-pts" id="t-p2">—</span>
+      <span class="match-pts" id="t-p2">0</span>
     </div>
   </div>
-  <div class="note">Finals use cumulative points from week 3 + week 4 combined.</div>
+  <div class="note">Week 4 is a fresh reset — only points scored this week count for the final.</div>
 </div>
 
 <hr class="divider">
 
+<!-- CHALLENGER -->
 <div class="block">
   <div class="sl">Challenger League &mdash; weeks 3+4 &middot; reset to 0</div>
   <div class="match-card green">
-    <div class="match-head">Challenger title &mdash; most points in weeks 3 &amp; 4</div>
+    <div class="match-head">Challenger title &mdash; most points in weeks 3 &amp; 4 combined</div>
     <div id="challenger-rows">
       <div style="padding:14px;font-size:13px;color:#737370">Loading...</div>
     </div>
@@ -216,6 +316,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <hr class="divider">
 
+<!-- PRIZES -->
 <div class="block">
   <div class="sl">Prizes</div>
   <div class="prizes-grid">
@@ -262,18 +363,26 @@ const CSV_URL = 'https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx
 const INITIALS = {Ramon:'RA',Manuel:'MA',Simona:'SI',Paul:'PA',Lukas:'LU',Alfred:'AL',Juan:'JU'};
 
 function ini(n){ return INITIALS[n]||n.substring(0,2).toUpperCase(); }
+
+// Week 3 points only — for semifinal winner determination
 function ptsW3(p){ return (p.w3may||0)*2+(p.w3other||0)*1+(p.w3deals||0)*6; }
+// Week 4 points only — for finals
 function ptsW4(p){ return (p.w4may||0)*2+(p.w4other||0)*1+(p.w4deals||0)*6; }
-function ptsCum(p){ return ptsW3(p)+ptsW4(p); }
+// Challenger: weeks 3+4 combined
+function ptsChal(p){ return ptsW3(p)+ptsW4(p); }
 
 function parseCSV(text){
   const lines = text.trim().split('\n').slice(1);
   return lines.map(line=>{
     const c = line.split(',').map(x=>x.replace(/^"|"$/g,'').trim());
     return {
-      name:c[0],
-      w3may:parseInt(c[7])||0, w3other:parseInt(c[8])||0, w3deals:parseInt(c[9])||0,
-      w4may:parseInt(c[10])||0, w4other:parseInt(c[11])||0, w4deals:parseInt(c[12])||0,
+      name:    c[0],
+      w3may:   parseInt(c[7])||0,
+      w3other: parseInt(c[8])||0,
+      w3deals: parseInt(c[9])||0,
+      w4may:   parseInt(c[10])||0,
+      w4other: parseInt(c[11])||0,
+      w4deals: parseInt(c[12])||0,
     };
   }).filter(p=>p.name);
 }
@@ -289,7 +398,7 @@ function setMatch(el1,el2,pts1,pts2){
   else{el1.className='match-pts';el2.className='match-pts';}
 }
 
-function setName(avId,nameId,p){
+function setPlayer(avId,nameId,p){
   document.getElementById(avId).textContent=ini(p.name);
   const el=document.getElementById(nameId);
   el.textContent=p.name; el.style.fontStyle='normal'; el.style.color='#1a1a18';
@@ -297,35 +406,35 @@ function setName(avId,nameId,p){
 
 function render(data){
   const ramon=get(data,'Ramon'), simona=get(data,'Simona');
-  const juan=get(data,'Juan'), lukas=get(data,'Lukas');
+  const juan=get(data,'Juan'),   lukas=get(data,'Lukas');
   const manuel=get(data,'Manuel'), paul=get(data,'Paul'), alfred=get(data,'Alfred');
 
-  // Semifinals (week 3 only)
+  // Semifinals — week 3 only
   const sf1r=ptsW3(ramon), sf1s=ptsW3(simona);
   setMatch(document.getElementById('sf1-p1'),document.getElementById('sf1-p2'),sf1r,sf1s);
   const sf2j=ptsW3(juan), sf2l=ptsW3(lukas);
   setMatch(document.getElementById('sf2-p1'),document.getElementById('sf2-p2'),sf2j,sf2l);
 
-  // Winners/losers based on week 3
+  // Determine winners/losers from week 3
   const sf1w=sf1r>=sf1s?ramon:simona, sf1lo=sf1r>=sf1s?simona:ramon;
   const sf2w=sf2j>=sf2l?juan:lukas,   sf2lo=sf2j>=sf2l?lukas:juan;
 
-  // Final — cumulative w3+w4
-  setName('f-av1','f-n1',sf1w); setName('f-av2','f-n2',sf2w);
-  setMatch(document.getElementById('f-p1'),document.getElementById('f-p2'),ptsCum(sf1w),ptsCum(sf2w));
+  // Finals — week 4 only (fresh reset)
+  setPlayer('f-av1','f-n1',sf1w); setPlayer('f-av2','f-n2',sf2w);
+  setMatch(document.getElementById('f-p1'),document.getElementById('f-p2'),ptsW4(sf1w),ptsW4(sf2w));
 
-  // 3rd place — cumulative w3+w4
-  setName('t-av1','t-n1',sf1lo); setName('t-av2','t-n2',sf2lo);
-  setMatch(document.getElementById('t-p1'),document.getElementById('t-p2'),ptsCum(sf1lo),ptsCum(sf2lo));
+  // 3rd place — week 4 only
+  setPlayer('t-av1','t-n1',sf1lo); setPlayer('t-av2','t-n2',sf2lo);
+  setMatch(document.getElementById('t-p1'),document.getElementById('t-p2'),ptsW4(sf1lo),ptsW4(sf2lo));
 
-  // Challenger sorted by cumulative
-  const challengers=[manuel,paul,alfred].sort((a,b)=>ptsCum(b)-ptsCum(a));
+  // Challenger — weeks 3+4 combined
+  const challengers=[manuel,paul,alfred].sort((a,b)=>ptsChal(b)-ptsChal(a));
   const cr=document.getElementById('challenger-rows');
   cr.innerHTML='';
   challengers.forEach((p,i)=>{
     const div=document.createElement('div');
     div.className='ch-player';
-    div.innerHTML=`<div class="av av-green">${ini(p.name)}</div><span class="ch-player-name">${p.name}</span><span class="ch-pts ${i===0?'first':''}">${ptsCum(p)}</span>`;
+    div.innerHTML=`<div class="av av-green">${ini(p.name)}</div><span class="ch-player-name">${p.name}</span><span class="ch-pts ${i===0?'first':''}">${ptsChal(p)}</span>`;
     cr.appendChild(div);
   });
 }
